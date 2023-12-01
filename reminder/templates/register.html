@@ -1,0 +1,70 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block body_block%}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="{%static 'css/reg_style.css'%}">
+<form method="post">
+    {%csrf_token%}
+    <div class="container register">
+        <div class="row">
+            <div class="col-md-3 register-left">
+                <h3>Welcome</h3>
+                <p>You are 30 seconds away from earning your own money!</p>
+                <input type="submit" name="signin" value="Login" /><br/>
+            </div>
+            <div class="col-md-9 register-right">
+    
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h3 class="register-heading">JOIN TODO</h3>
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="username" placeholder="user Name *" value="" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" name="password1" placeholder="password *" value="" />
+                                </div>
+    
+                                <div class="form-group">
+                                    <div class="maxl">
+    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Your Email *" value="" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" minlength="10" maxlength="10" name="password1" class="form-control"
+                                        placeholder="confrim password *" value="" />
+                                </div>
+    
+    
+                                <input type="submit" class="btnRegister" value="Register" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    
+                        <div class="row register-form">
+                            <div class="col-md-6">
+    
+                            </div>
+                            <div class="col-md-6">
+    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+</form>
+{%endblock%}
