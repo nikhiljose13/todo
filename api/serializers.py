@@ -15,4 +15,4 @@ class Todoserializers(serializers.ModelSerializer):
      class Meta:
         model=Todos
         fields="__all__"
-        read_only_fields=["id","date","user","status"]
+        read_only_fields=["id","date","user"]
