@@ -2,7 +2,7 @@ from django.shortcuts import render
 from api.serializers import Userserializers,Todoserializers
 from rest_framework import serializers
 from rest_framework.views import APIView
-from rest_framework.viewsets import ViewSet
+from rest_framework.viewsets import ViewSet,ModelViewSet
 from rest_framework.response import Response
 from rest_framework import authentication,permissions
 # Create your views here.
@@ -21,7 +21,7 @@ class SignupView(APIView):
             return Response(data=serializer.errors)
         
 class   TodosView(ViewSet):
-    authentication_classes=[authentication.BasicAuthentication]
+    authentication_classes=[authentication.TokenAuthentication]
     permission_classes=[permissions.IsAuthenticated]
 
     def list(self,requset,*args,**kwargs):
@@ -64,3 +64,14 @@ class   TodosView(ViewSet):
                   return Response(data=Serializers.data)
             else:
                   return  Response(data=Serializers.errors)
+            
+
+class TodosViewsetview(ModelViewSet):
+     serializer_class=Todoserializers
+     queryset=Todos.objects.all()
+     authentication_classes=[authentication.TokenAuthentication]
+     permission_classes=[permissions.IsAuthenticated]
+     def get_queryset(self):
+          return Todos.objects.filter(user=self.request.user)
+     def perform_create(self, serializer):
+          serializer.save(user=self.request.user)

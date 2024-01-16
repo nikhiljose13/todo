@@ -12,6 +12,7 @@ class Userserializers(serializers.ModelSerializer):
         return User.objects.create_user(**validated_data)
     
 class Todoserializers(serializers.ModelSerializer):
+     user=serializers.StringRelatedField(read_only=True)
      class Meta:
         model=Todos
         fields="__all__"
